@@ -2,14 +2,10 @@
 const redis    = require('redis');
 const url      = require('url');
 
-const redisURL = process.env.REDISCLOUD_URL;
-const client   = redis.createClient(
-                       redisURL.port, 
-                       redisURL.hostname,
-                        {no_ready_check: true}
-                        );
 
-client.auth(redisURL.auth.split(":")[1]);
+const redisURL = url.parse(process.env.REDISCLOUD_URL);
+const client   = redis.createClient(  redisURL  );
+
 
 // const client = redis.createClient({
 //   port:6379,
