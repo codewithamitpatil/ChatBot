@@ -11,7 +11,7 @@ client = require("redis").createClient(rtg.port, rtg.hostname);
 client.auth(rtg.auth.split(":")[1]);
 
 } else {
-  var client = require("redis").createClient();
+   client = require("redis").createClient();
 }
 
 
