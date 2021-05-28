@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "60aff0b11025c64a500fca15"
+  },
+  "account": "verified",
+  "username": "amit",
+  "password": "$2b$10$4z/rVD7dBgos1JabH1WYDelnZm/6059TlJwiVjicXkicr1RDoBWm.",
+  "email": "amitwebdev2019@gmail.com",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0a001d8d182194aef09b1"
+  },
+  "account": "notverified",
+  "username": "amit1",
+  "password": "$2b$10$eufiwd8C7ofnKDVE65OaXeV.JdN/kWAK5BK2IwnLVb5bYYs6sjjtS",
+  "email": "amitpatil@gmail.com",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0a00fd8d182194aef09b2"
+  },
+  "account": "notverified",
+  "username": "amit2",
+  "password": "$2b$10$DIX/tDf.dcYqi1w2g7gg2eD.GOv1N8fTJ5aNRCedlWG9uRW5iRRDG",
+  "email": "amitpatil1@gmail.com",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0a018d8d182194aef09b3"
+  },
+  "account": "notverified",
+  "username": "amit3",
+  "password": "$2b$10$.Gud0oOxfTfg1FXud1eYoeRxJgMhKw4UBcxU.r2CVeD/svRUtRed.",
+  "email": "amitpatil3@gmail.com",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b0a021d8d182194aef09b4"
+  },
+  "account": "notverified",
+  "username": "amit4",
+  "password": "$2b$10$oaiqbU8blejcJzgUTRE.T.24a3rOctckwiQ/Fxk5EmD4nw23U.GHO",
+  "email": "amitpatil4@gmail.com",
+  "__v": 0
+}]

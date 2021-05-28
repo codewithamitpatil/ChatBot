@@ -5,16 +5,15 @@ const mongoose   = require('mongoose');
 
 const db ='mongodb+srv://amit_1:Amit123@authentication.qq25p.mongodb.net/auth?retryWrites=true&w=majority';
 
-
-const connection = mongoose.connect(
-  db ,{
-     useCreateIndex:true,
-     useFindAndModify:false,
-     useNewUrlParser:true,
-     useUnifiedTopology:true
-  }                     
-).then(()=>{
-             console.log('amit mongodb connected successfully');
+const connection = mongoose.connect(process.env.MONGO_URL,{
+                   dbName:process.env.MONGO_DB,
+                   useCreateIndex:true,
+                   useFindAndModify:false,
+                   useNewUrlParser:true,
+                   useUnifiedTopology:true
+                      
+}).then(()=>{
+             console.log('mongodb connected successfully');
 }).catch((err)=>{
              console.log(err.message);
 });
