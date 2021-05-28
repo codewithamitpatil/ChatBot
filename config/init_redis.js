@@ -1,19 +1,22 @@
 
 const redis    = require('redis');
-const url      = require('url');
 
+let client;
 
-const redisURL = process.env.REDISCLOUD_URL;
-const client   = redis.createClient(  redisURL  );
+if (process.env.REDISTOGO_URL) {
+ console.log('///////////');
+var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+client = require("redis").createClient(rtg.port, rtg.hostname);
 
+client.auth(rtg.auth.split(":")[1]);
 
-// const client = redis.createClient({
-//   port:6379,
-//   host:'127.0.0.1'
-// });
+} else {
+  var client = require("redis").createClient();
+}
+
 
 client.on('connect',async()=>{
-  console.log('redis connected');
+  console.log('redis connected 11');
 });
 
 client.on('error',async(err)=>{
@@ -21,7 +24,7 @@ client.on('error',async(err)=>{
 });
 
 client.on('end',async()=>{
-  console.log('redis end');
+  console.log('redis end 111');
 });
 
 process.on('SIGINT',()=>{
