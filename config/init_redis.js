@@ -2,18 +2,7 @@
 const redis    = require('redis');
 const url = require("url");
 
-let client;
-
-if (process.env.REDISTOGO_URL) {
- console.log('///////////');
-var rtg   = new url.URL(process.env.REDISTOGO_URL);
-client = require("redis").createClient(rtg.port, rtg.hostname);
-
-client.auth(rtg.auth.split(":")[1]);
-
-} else {
-   client = require("redis").createClient();
-}
+const client = redis.createClient(new url.URL(process.env.REDISTOGO_URL));
 
 
 client.on('connect',async()=>{
