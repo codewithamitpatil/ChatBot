@@ -172,19 +172,22 @@ module.exports = {
         const result = await AuthValidations.Refresh_Token.validateAsync(req.body);
 
         const uid = await jwtToken.VerifyRefreshToken(result.RefreshToken);                     
+        console.log('amit is = ');
+        console.log(uid);
         
         redisClient.del(uid,(err,replay)=>{
             if(err)
             {
-              return next(new httpErrors.Unauthorized());
+            //  return next(new httpErrors.Unauthorized());
             }
+            
         });
         
-        res.json({
+     return   res.send({
                   'status':200,
                   'msg':'user logged out successfully'
                 });
-        return;
+        
     }
 ,
 
