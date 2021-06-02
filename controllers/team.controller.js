@@ -12,7 +12,21 @@ module.exports =
 // get all teams    
 GetAllTeams:async(req,res,next)=>{
 
-  res.send('hi');
+  
+const SavedTeam = await TeamModel.find();                       
+
+
+
+res.status(200).send({ 
+
+"Banner Details":SavedTeam,
+"error":"",
+"status":"true"
+
+
+
+});
+
 
 }
 ,
@@ -24,9 +38,19 @@ GetTeamById:async(req,res,next)=>{
   const result = await  TeamValidations.FetchByServiceId.validateAsync(req.body).
                          catch((err)=>{ next(new HttpErrors.BadRequest('The browser (or proxy) sent a request that this server could not understand.')); });
   
-  const temp = await TeamModel.find({ "sub_service_id" :result.subservice_id ,"service_id":result.service_id });                       
-console.log(temp);
-  res.send(temp);
+  const SavedTeam = await TeamModel.find({ "sub_service_id" :result.subservice_id ,"service_id":result.service_id });                       
+
+  
+
+res.status(200).send({ 
+ 
+  "Banner Details":SavedTeam,
+  "error":"",
+  "status":"true"
+
+
+
+});
 
 }
 ,
