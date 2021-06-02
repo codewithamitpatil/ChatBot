@@ -20,6 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.1.0",
     "express-rate-limit": "^5.2.6",
     "express-validator": "^6.11.1",
     "gitignore": "^0.6.0",
@@ -31,6 +32,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.6.1",
-    "redis": "^3.1.2"
+    "redis": "^3.1.2",
+    "request-ip": "^2.1.3"
   }
 }
