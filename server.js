@@ -1,12 +1,13 @@
 
-const express     = require('express');
-const bodyParser  = require('body-parser');
-const cors        = require('cors');
-const HttpErrors  = require('http-errors');
-const path        = require('path');
-const multer      = require('multer');
-const morgan      = require('morgan');
-const helmet      = require('helmet');
+const express        = require('express');
+const bodyParser     = require('body-parser');
+const cors           = require('cors');
+const HttpErrors     = require('http-errors');
+const path           = require('path');
+const multer         = require('multer');
+const morgan         = require('morgan');
+const helmet         = require('helmet');
+const mongoSanitize  = require('express-mongo-sanitize');
 
 // env file
 require('dotenv').config();
@@ -22,7 +23,7 @@ const rateLimit    = require('./middlewares/ratelimiter.middleware');
 // require routes 
 const authRoutes = require('./routes/auth.routes');
 const userRoutes = require('./routes/user.routes');
-
+const teamRoutes = require('./routes/team.routes');
 
 
 const PORT = process.env.PORT || 3000;
@@ -32,7 +33,7 @@ const app = express();
 const upload = multer();
 
 //  ratelimit to block ip
-    app.use(rateLimit);
+   // app.use(rateLimit);
 
 //  request  log (morgan)
     app.use(morgan('dev'));
@@ -49,10 +50,14 @@ const upload = multer();
 //  urlencoded data parsing
     app.use(bodyParser.urlencoded({extended:true}));
 
+//  mongo sanitize (preventing nosql injections)    
+    app.use(mongoSanitize());
+    
 // formdata / multipart data parsing
 //app.use(upload.array());
 
-   
+
+
 //  demo route
     app.get('',AuthGard.VerifyAccessToken,
                asyncHandler(async(req,res,next)=>{
@@ -60,14 +65,12 @@ const upload = multer();
        res.send('welcome home');
        return;
    
-
-
-
     }));
 
 //  use routes
     app.use("/Auth",authRoutes);
     app.use("/User",userRoutes);
+    app.use("/Team",teamRoutes);
 
 //  404 page handler
     app.all('*',async(req,res,next)=>{
@@ -88,7 +91,7 @@ const upload = multer();
         
         console.log(`unhandledRejection Error: ${err.message}`);
         // Close server & exit process
-       // server.close(() => process.exit(1));
+        server.close(() => process.exit(1));
 
    });
 
